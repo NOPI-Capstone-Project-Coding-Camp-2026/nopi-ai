@@ -1,3 +1,7 @@
+# ---------------------------
+# Mengatur custom layer CNN
+# ---------------------------
+
 # -*- coding: utf-8 -*-
 """custom_layer
 

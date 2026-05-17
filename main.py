@@ -1,3 +1,9 @@
+# ----------------------------------------
+# MAIN API SERVER (FASTAPI)
+# Berfungsi sebagai entry point (jembatan) untuk melayani request dari Frontend
+# Disiapkan khusus untuk deployment ke Hugging Face Spaces
+# ----------------------------------------
+
 from fastapi import FastAPI, File, UploadFile
 import shutil
 import os
