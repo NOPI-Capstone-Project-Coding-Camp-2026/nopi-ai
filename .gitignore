@@ -144,6 +144,13 @@ ENV/
 env.bak/
 venv.bak/
 
+# virtual environment
+ocr-venv/
+
+# cache python
+__pycache__/
+*.pyc
+
 # Spyder project settings
 .spyderproject
 .spyproject
