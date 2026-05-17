@@ -1,3 +1,7 @@
+# ---------------------------------------------
+# Mengatur file-file yang ga di push ke github
+# ---------------------------------------------
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -222,17 +226,17 @@ dataset_dummy/
 
 # Dataset primer & sekunder
 dataset_struk/
-Dataset_Terstruktur_Primer_NOPI.csv
-Dataset_Terstruktur_Sekunder_NOPI.csv
 
 # Gambar uji coba (agar foto struk testing tidak masuk repo)
 *.jpg
 *.jpeg
-*.png
 
 # File sistem operasi (Windows & Mac)
 Thumbs.db
 .DS_Store
 
 # Hasil komparasi model OCR 
-hasil_komparasi_ocr.csv
+hasil_komparasi_ocr_final.csv
+ground_truth.csv
+evaluasi_3_model.csv
+detail_akurasi_semua_model.csv

@@ -1,8 +1,11 @@
+# ------------------------------------------------------------------------------------------------
+# Preprocess untuk model easy ocr (tidak digunakan saat ini (karna sudah menggunakan paddle ocr), 
+# tapi digunakan saat tahapan komparasi 3 model OCR)
+# ------------------------------------------------------------------------------------------------
+
 import cv2
 
-# =========================================================
 # PREPROCESS IMAGE
-# =========================================================
 
 def get_preprocessed_image(image_path):
 
@@ -13,9 +16,7 @@ def get_preprocessed_image(image_path):
             f"Gagal membaca gambar: {image_path}"
         )
 
-    # =====================================================
     # RESIZE
-    # =====================================================
 
     h, w = image.shape[:2]
 
@@ -30,18 +31,14 @@ def get_preprocessed_image(image_path):
             fy=scale
         )
 
-    # =====================================================
     # GRAYSCALE
-    # =====================================================
 
     gray = cv2.cvtColor(
         image,
         cv2.COLOR_BGR2GRAY
     )
 
-    # =====================================================
     # DENOISE
-    # =====================================================
 
     gray = cv2.bilateralFilter(
         gray,
@@ -50,9 +47,7 @@ def get_preprocessed_image(image_path):
         75
     )
 
-    # =====================================================
     # THRESHOLD
-    # =====================================================
 
     thresh = cv2.adaptiveThreshold(
 

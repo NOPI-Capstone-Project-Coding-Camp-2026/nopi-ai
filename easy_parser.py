@@ -1,10 +1,15 @@
+# ------------------------------------------------------------------------------
+# Parsing easy ocr (tidak digunakan saat ini (karna sudah menggunakan paddle ocr), 
+# tapi digunakan saat tahapan komparasi 3 model OCR)
+# ------------------------------------------------------------------------------
+
 import re
 import json
 from collections import defaultdict
 
 class ReceiptParser:
     def __init__(self):
-        # Memperluas blacklist kata kunci sampah (mengakomodasi typo OCR dari log eror kamu)
+        # Memperluas blacklist kata kunci sampah
         self.garbage_keywords = [
             "TOTAL", "SUBTOTAL", "SUB TOTAL", "KEMBALI", "TUNAI", "CASH", "CHANGE", 
             "NON TUNAI", "DEBIT", "QRIS", "BANK", "TERIMA KASIH", "TERIMAKASIH", 

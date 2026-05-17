@@ -1,3 +1,8 @@
+# ---------------------------------------------------------------------------------------------
+# Menguji 3 model OCR (tesseract, paddle, dan easy) secara bersamaan 
+# Hasilnya adalah data mentah: waktu proses (inference time), raw text, dan hasil parsing JSON
+# ---------------------------------------------------------------------------------------------
+
 import time
 import pandas as pd
 # Import fungsi OCR di sini
@@ -26,51 +31,65 @@ def run_benchmark(image_paths):
         waktu_tesseract = round(time.time() - start_time, 2)
         json_tesseract = parse_tesseract_text(raw_tesseract)
 
-        # 3. TES EASY OCR (Nanti Punya Hanna Masuk Sini)
-
+        # 3. TES EASY OCR 
         start_time = time.time()
-
         raw_easy = extract_text_easy(img)
-
-        waktu_easy = round(
-            time.time() - start_time,
-            2
-        )
-
-        json_easy = parse_easyocr_text(
-            raw_easy
-        )
+        waktu_easy = round(time.time() - start_time, 2)
+        json_easy = parse_easyocr_text(raw_easy)
 
         # Simpan hasil sementara
         hasil_komparasi.append({
             "File": img,
 
             "Waktu_Paddle": waktu_paddle,
+            "Raw_Paddle": raw_paddle,           
             "Hasil_Paddle": json_paddle,
 
             "Waktu_Tesseract": waktu_tesseract,
+            "Raw_Tesseract": raw_tesseract,     
             "Hasil_Tesseract": json_tesseract,
 
             "Waktu_EasyOCR": waktu_easy,
+            "Raw_EasyOCR": raw_easy,            
             "Hasil_EasyOCR": json_easy
         })
 
     # Export ke CSV untuk bahan laporan di GDocs
     df = pd.DataFrame(hasil_komparasi)
     df.to_csv("hasil_komparasi_ocr_final.csv", index=False)
-    print("\n✅ Selesai! Hasil uji coba tersimpan di 'hasil_komparasi_ocr.csv'")
+    print("\n✅ Selesai! Hasil uji coba tersimpan di 'hasil_komparasi_ocr_final.csv'")
 
 if __name__ == "__main__":
     daftar_foto = [
-        r"dataset_struk/primer_0067.jpg", 
-        r"dataset_struk/primer_0071.jpg",  
-        r"dataset_struk/primer_0081.jpg",  
-        r"dataset_struk/primer_0082.jpg",  
-        r"dataset_struk/primer_0096.jpg",  
-        r"dataset_struk/primer_0099.jpg",  
-        r"dataset_struk/primer_0108.jpg",  
-        r"dataset_struk/primer_0109.jpg",  
-        r"dataset_struk/primer_0111.jpg",  
-        r"dataset_struk/primer_0117.jpg"  
+        r"dataset_struk/primer_0002.jpg",
+        r"dataset_struk/primer_0031.jpg",
+        r"dataset_struk/primer_0051.jpg",
+        r"dataset_struk/primer_0085.jpg",
+        r"dataset_struk/primer_0021.jpg",
+        r"dataset_struk/primer_0040.jpg",
+        r"dataset_struk/primer_0052.jpg",
+        r"dataset_struk/primer_0059.jpg",
+        r"dataset_struk/primer_0061.jpg",
+        r"dataset_struk/primer_0062.jpg",
+        r"dataset_struk/primer_0063.jpg",
+        r"dataset_struk/primer_0092.jpg",
+        r"dataset_struk/primer_0102.jpg",
+        r"dataset_struk/primer_0089.jpg",
+        r"dataset_struk/primer_0094.jpg",
+        r"dataset_struk/primer_0091.jpg",
+        r"dataset_struk/primer_0093.jpg",
+        r"dataset_struk/primer_0110.jpg",
+        r"dataset_struk/primer_0114.jpg",
+        r"dataset_struk/primer_0116.jpg",
+        r"dataset_struk/primer_0067.jpg",
+        r"dataset_struk/primer_0071.jpg",
+        r"dataset_struk/primer_0081.jpg",
+        r"dataset_struk/primer_0082.jpg",
+        r"dataset_struk/primer_0096.jpg",
+        r"dataset_struk/primer_0099.jpg",
+        r"dataset_struk/primer_0108.jpg",
+        r"dataset_struk/primer_0109.jpg",
+        r"dataset_struk/primer_0111.jpg",
+        r"dataset_struk/primer_0117.jpg"
     ]
     run_benchmark(daftar_foto)

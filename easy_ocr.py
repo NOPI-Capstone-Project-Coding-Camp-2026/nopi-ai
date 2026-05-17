@@ -1,22 +1,23 @@
+# ------------------------------------------------------------------------------
+# Model easy ocr (tidak digunakan saat ini (karna sudah menggunakan paddle ocr), 
+# tapi digunakan saat tahapan komparasi 3 model OCR)
+# ------------------------------------------------------------------------------
+
 import easyocr
 
 from easyocr_preprocess import (
     get_preprocessed_image
 )
 
-# =========================================================
-# INIT EASYOCR
-# =========================================================
 
+# INIT EASYOCR
 reader = easyocr.Reader(
     ['id', 'en'],
     gpu=False
 )
 
-# =========================================================
-# EXTRACT TEXT EASYOCR
-# =========================================================
 
+# EXTRACT TEXT EASYOCR
 def extract_text_easy(image_path):
 
     image = get_preprocessed_image(
@@ -44,10 +45,7 @@ def extract_text_easy(image_path):
     return parsed_results
 
 
-# =========================================================
 # TEST
-# =========================================================
-
 if __name__ == "__main__":
 
     image_path = r"dataset_struk/primer_0071.jpg"
