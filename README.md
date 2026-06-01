@@ -213,7 +213,25 @@ Used to compare parsing quality of:
 
 ---
 
-### 8. Generate Structured Dataset from primary receipt images.
+### 8. OCR Metrics
+
+Using `metrics_utils.py` for calculating OCR evaluation metrics such as Character Error Rate (CER) and Word Error Rate (WER).
+
+Used to compare OCR extraction performance between PaddleOCR, EasyOCR, and Tesseract OCR.
+
+---
+
+### 9. Run OCR Metrics
+
+```bash
+python evaluate_ocr_metrics.py
+```
+
+Generates CSV files containing CER and WER scores for each receipt image and average OCR metrics for all models. The results are used to determine the best OCR model and support Streamlit visualizations by the Data Science team.
+
+---
+
+### 10. Generate Structured Dataset from primary receipt images.
 
 ```bash
 python generate_dataset.py
@@ -223,7 +241,7 @@ Generates structured CSV transaction datasets from receipt images.
 
 ---
 
-### 9. Calculate Parsing Accuracy
+### 11. Calculate Parsing Accuracy
 
 ```bash
 python hitung_akurasi.py
@@ -236,7 +254,7 @@ Used to evaluate parsing accuracy such as:
 
 ---
 
-### 10. Run AI Inference Pipeline
+### 12. Run AI Inference Pipeline
 
 ```bash
 python inference_notebook.py
