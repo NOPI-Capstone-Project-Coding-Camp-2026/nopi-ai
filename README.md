@@ -133,7 +133,7 @@ This project uses Python v3.11 and virtual environment (venv).
 ### 1. Clone Repository
 
 ```bash
-[git clone https://github.com/your-organization/nopi-ai-models.git](https://github.com/NOPI-Capstone-Project-Coding-Camp-2026/nopi-ai-api.git)
+git clone https://github.com/your-organization/nopi-ai-models.git
 
 cd nopi-ai-api
 ```
