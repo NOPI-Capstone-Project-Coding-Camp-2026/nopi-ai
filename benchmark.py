@@ -57,20 +57,18 @@ def run_benchmark(image_paths):
 
     # Export ke CSV untuk bahan laporan di GDocs
     df = pd.DataFrame(hasil_komparasi)
-    df.to_csv("hasil_komparasi_ocr_final.csv", index=False)
+    df.to_csv("hasil_komparasi_ocr_coba.csv", index=False)
     print("\n✅ Selesai! Hasil uji coba tersimpan di 'hasil_komparasi_ocr.csv'")
 
+import os
+
 if __name__ == "__main__":
+    folder_path = r"dataset_struk/try2"
+
     daftar_foto = [
-        r"dataset_struk/primer_0067.jpg", 
-        r"dataset_struk/primer_0071.jpg",  
-        r"dataset_struk/primer_0081.jpg",  
-        r"dataset_struk/primer_0082.jpg",  
-        r"dataset_struk/primer_0096.jpg",  
-        r"dataset_struk/primer_0099.jpg",  
-        r"dataset_struk/primer_0108.jpg",  
-        r"dataset_struk/primer_0109.jpg",  
-        r"dataset_struk/primer_0111.jpg",  
-        r"dataset_struk/primer_0117.jpg"  
+        os.path.join(folder_path, file)
+        for file in os.listdir(folder_path)
+        if file.lower().endswith((".jpg", ".jpeg", ".png", ".bmp", ".webp"))
     ]
+
     run_benchmark(daftar_foto)
